@@ -1,5 +1,6 @@
 package com.springboot.api.controller;
 
+import com.springboot.api.dto.MemberDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -45,7 +46,7 @@ public class GetController {
         return name + " " + email + " " + organization;
     }
 
-    //쿼리스트링에 어떤 값이 들어올지 모르는 상황에는 Map객체를 활용할 수 있음
+    //쿼리스트링에 어떤 값이 들어올지 모르는 상황에는 Map객체를 활용할 수 있음 ex)취미란 입력 안하는 경우
     //http://localhost:8080/api/v1/get-api/request2?key1=value1&key2=value2
     @GetMapping(value = "/request2")
     public String getRequestParam2(
@@ -57,6 +58,15 @@ public class GetController {
         });
 
         return sb.toString();
+    }
+
+    //DTO 객체를 활용한 GET METHOD
+    //http://localhost:8080/api/v1/get-api/request3?name=value1&email=value2&organization=value3
+    @GetMapping(value = "/request3")
+    public String getRequestParam3(MemberDto memberDto){
+        //밑에 두개가 같은 결과이지만 밑에 메서드로 빼서 코드 가독성 높힘.
+        //return memberDto.getName() + " " + memberDto.getEmail() + " " + memberDto.getOrganization();
+        return memberDto.toString();
     }
 
 
