@@ -11,5 +11,9 @@
         <module name="api.api.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api.api.main~1" target="17" />
+      <module name="api.api.test~1" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
